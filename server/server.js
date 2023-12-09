@@ -9,81 +9,52 @@ app.use(express.static('server/public'));
 // calculation objects:
 let calculations = []
 
-
-
-
 // Here's a wonderful place to make some routes:
 
 // GET /calculations
 app.get('/calculations', (req, res) => {
   console.log("Request for calculations was made:")
+  // send [calculations] on GET request
   res.send(calculations)
 })
 
 // POST /calculations
 app.post('/calculations', (req, res) => {
   console.log("Request for calculations was made:")
+  // console.log("Calculations before:", calculations); // for testing
+  // console.log("req.body before:", req.body) // for testing
   
-  console.log("Calculations before:", calculations);
-
   let numOne = req.body.firstNumber
   let numTwo = req.body.secondNumber
   let operator = req.body.operator
-  console.log("OPERATOR:", operator)
+  
 
-
+  // if operator is plus, add numOne & numTwo
   if(operator === '+'){
     req.body.result = numOne + numTwo
-    console.log("REQ BODY", req.body)
-    console.log("IN PLUS:", operator)
+    // console.log("REQ BODY", req.body)
+    // console.log("IN PLUS:", operator)
   } else if(operator === '-'){
     req.body.result = numOne - numTwo
-    console.log("REQ BODY", req.body)
-    console.log("IN MINUS:", operator)
+    // console.log("REQ BODY", req.body)
+    // console.log("IN MINUS:", operator)
   } else if(operator === '*'){
     req.body.result = numOne * numTwo
-    console.log("REQ BODY", req.body)
-    console.log("IN TIMES:", operator)
+    // console.log("REQ BODY", req.body)
+    // console.log("IN TIMES:", operator)
   } else if(operator === '/'){
     req.body.result = numOne / numTwo
-    console.log("REQ BODY", req.body)
-    console.log("IN DIVIDE:", operator)
+    // console.log("REQ BODY", req.body)
+    // console.log("IN DIVIDE:", operator)
   }
 
-  console.log("Result:", req.body.result);
+  // console.log("RESULT:", req.body.result); // for testing
 
+  // push calculated req.body to [calculations]
   calculations.push(req.body)
-  console.log("Calculations after:", calculations);
+  // console.log("Calculations after:", calculations); // for testing
   res.sendStatus(201)
-  
 })
-
-// function calculate() {
-//   let numOne = req.body.firstNumber
-//   let numTwo = req.body.secondNumber
-//   let operator = req.body.operator
-
-//   if(operator = '+'){
-//     req.body.result = numOne + numTwo;
-//     console.log("REQ BODY", req.body)
-//   } else if(operator = '-'){
-//     req.body.result = numOne - numTwo;
-//     console.log("REQ BODY", req.body)
-//   } else if(operator = '*'){
-//     req.body.result = numOne * numTwo;
-//     console.log("REQ BODY", req.body)
-//   } else if(operator = '/'){
-//     req.body.result = numOne / numTwo;
-//     console.log("REQ BODY", req.body)
-//   }
-
-//   console.log("Result:", req.body.result);
-
-//   calculations.push(req.body)
-//   console.log("Calculations after:", calculations);
-// }
-
-
 
 
 
