@@ -23,15 +23,61 @@ app.get('/calculations', (req, res) => {
 // POST /calculations
 app.post('/calculations', (req, res) => {
   console.log("Request for calculations was made:")
+  
   console.log("Calculations before:", calculations);
+
+  let numOne = req.body.firstNumber
+  let numTwo = req.body.secondNumber
+  let operator = req.body.operator
+
+  
+  if(operator = '+'){
+    req.body.result = numOne + numTwo
+    console.log("REQ BODY", req.body)
+  } else if(operator = '-'){
+    req.body.result = numOne - numTwo
+    console.log("REQ BODY", req.body)
+  } else if(operator = '*'){
+    req.body.result = numOne * numTwo
+    console.log("REQ BODY", req.body)
+  } else if(operator = '/'){
+    req.body.result = numOne / numTwo
+    console.log("REQ BODY", req.body)
+  }
+
+  console.log("Result:", req.body.result);
+
   calculations.push(req.body)
   console.log("Calculations after:", calculations);
   res.sendStatus(201)
+  
 })
 
-function caculate() {
-  // need to take object POSTED, input args, return result. 
-}
+// function calculate() {
+//   let numOne = req.body.firstNumber
+//   let numTwo = req.body.secondNumber
+//   let operator = req.body.operator
+
+//   if(operator = '+'){
+//     req.body.result = numOne + numTwo;
+//     console.log("REQ BODY", req.body)
+//   } else if(operator = '-'){
+//     req.body.result = numOne - numTwo;
+//     console.log("REQ BODY", req.body)
+//   } else if(operator = '*'){
+//     req.body.result = numOne * numTwo;
+//     console.log("REQ BODY", req.body)
+//   } else if(operator = '/'){
+//     req.body.result = numOne / numTwo;
+//     console.log("REQ BODY", req.body)
+//   }
+
+//   console.log("Result:", req.body.result);
+
+//   calculations.push(req.body)
+//   console.log("Calculations after:", calculations);
+// }
+
 
 
 
