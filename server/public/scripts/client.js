@@ -67,6 +67,16 @@ function handleGet() {
             </li>
             `
         }
+        let recentResult = response.data[response.data.length - 1]
+        let displayRecent = document.getElementById('recentResult')
+        displayRecent.innerHTML = `
+            ${recentResult.firstNumber} 
+            ${recentResult.operator} 
+            ${recentResult.secondNumber} 
+            =
+            ${recentResult.result}
+            `
+
     }) .catch((error) => {
         console.log("Error:", error);
     })

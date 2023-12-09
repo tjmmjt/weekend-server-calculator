@@ -29,20 +29,25 @@ app.post('/calculations', (req, res) => {
   let numOne = req.body.firstNumber
   let numTwo = req.body.secondNumber
   let operator = req.body.operator
+  console.log("OPERATOR:", operator)
 
-  
-  if(operator = '+'){
+
+  if(operator === '+'){
     req.body.result = numOne + numTwo
     console.log("REQ BODY", req.body)
-  } else if(operator = '-'){
+    console.log("IN PLUS:", operator)
+  } else if(operator === '-'){
     req.body.result = numOne - numTwo
     console.log("REQ BODY", req.body)
-  } else if(operator = '*'){
+    console.log("IN MINUS:", operator)
+  } else if(operator === '*'){
     req.body.result = numOne * numTwo
     console.log("REQ BODY", req.body)
-  } else if(operator = '/'){
+    console.log("IN TIMES:", operator)
+  } else if(operator === '/'){
     req.body.result = numOne / numTwo
     console.log("REQ BODY", req.body)
+    console.log("IN DIVIDE:", operator)
   }
 
   console.log("Result:", req.body.result);
