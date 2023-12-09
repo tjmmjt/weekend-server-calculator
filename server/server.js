@@ -6,19 +6,19 @@ app.use(express.json());
 app.use(express.static('server/public'));
 
 // Global variable that will contain all of the
-// calculation objects:
+// ! calculation objects:
 let calculations = []
 
 // Here's a wonderful place to make some routes:
 
-// GET /calculations
+// ! GET /calculations
 app.get('/calculations', (req, res) => {
   console.log("Request for calculations was made:")
   // send [calculations] on GET request
   res.send(calculations)
 })
 
-// POST /calculations
+// ! POST /calculations
 app.post('/calculations', (req, res) => {
   console.log("Request for calculations was made:")
   // console.log("Calculations before:", calculations); // for testing
@@ -27,7 +27,6 @@ app.post('/calculations', (req, res) => {
   let numOne = req.body.firstNumber
   let numTwo = req.body.secondNumber
   let operator = req.body.operator
-  
 
   // if operator is plus, add numOne & numTwo
   if(operator === '+'){
