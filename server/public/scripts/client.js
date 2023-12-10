@@ -26,8 +26,18 @@ const clear = document.getElementById('clear')
 clear.addEventListener('click', () => {document.querySelector('form').reset()})
 
 // ! POST
-function handlePost(event) {
-    event.preventDefault()
+function checkInputs(event) {
+    event.preventDefault(event)
+    console.log(document.getElementById('numOne').value);
+    if(document.getElementById('numOne').value === '' || document.getElementById('numTwo').value === '') {
+        alert("Missing input(s)!")
+    } else {
+        handlePost()
+    }
+}
+
+function handlePost() {
+
 
     //declare input variable and assign to input.value 
     // assign input to {inputs.firstNumber} and make a Number
@@ -85,6 +95,10 @@ function handleGet() {
     })
     // clear form
     document.querySelector('form').reset()
+}
+
+function handleDelete() {
+    
 }
 
 onReady()
